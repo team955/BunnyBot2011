@@ -36,4 +36,8 @@ public class Vars {
 	static int DartI = 5;
 	static int DartD = 5;
 	static int DartMotorChannel = 3;
+
+	//Joystick
+	static int mainJSPort = 1;
+	static int turretJSPort = 2;
 }

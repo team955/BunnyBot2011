@@ -16,12 +16,14 @@ public class DartAim {
 	Victor victor;
 	PIDController controller;
 	Gyro gyro;
+	Victor trigger;//TODO
 
 	public DartAim() {
 		gyro = new Gyro(Vars.GyroSlot, Vars.GyroChannel);
 		encoder = new Encoder(Vars.MotorSlot, Vars.DartAChannel, Vars.MotorSlot, Vars.DartBChannel);
 		victor = new Victor(Vars.MotorSlot, Vars.DartMotorChannel);
 		controller = new PIDController(Vars.DartP, Vars.DartI, Vars.DartP);
+
 	}
 
 	public void run(Joystick js) {
@@ -38,5 +40,10 @@ public class DartAim {
 		double speed = controller.out(desiredAngle, currentAngle, victor.getSpeed());
 
 		victor.set(speed);
+
+	}
+
+	public void shoot(){
+
 	}
 }

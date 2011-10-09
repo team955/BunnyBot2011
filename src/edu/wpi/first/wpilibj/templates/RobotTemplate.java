@@ -9,21 +9,22 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.*;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
+
 public class RobotTemplate extends IterativeRobot {
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
 
+	Joystick mainJS;
+	Joystick turretJS;
+	Drive drive;
+	Tilter tilter;
+	DartAim darter;
+    public void robotInit() {
+		mainJS = new Joystick(Vars.mainJSPort);
+		turretJS = new Joystick(Vars.turretJSPort);
+		drive = new Drive();
+		tilter = new Tilter();
+		darter = new DartAim();
     }
 
     /**
@@ -37,7 +38,8 @@ public class RobotTemplate extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        drive.run(mainJS);
+		tilter.run(mainJS);
+		darter.run(turretJS);
     }
-    
 }
